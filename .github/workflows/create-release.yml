@@ -1,6 +1,6 @@
 name: Create Release
 on:
-  pull_request:
+  pull_request_target:
     branches: ["main"]
     types: ["opened", "synchronize", "edited", "closed"]
 permissions:
@@ -28,7 +28,7 @@ jobs:
       version_tag: "${{ steps.generate-version.outputs.version_tag }}"
 
   release:
-    if:  github.event.pull_request.merged == true
+    if:  github.event.pull_request_target.merged == true
     needs: [semantic-version]
     runs-on: ubuntu-latest
     env:
