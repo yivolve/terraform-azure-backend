@@ -1,7 +1,13 @@
-variable "resource_group_name" {
+variable "resource_group_name_prefix" {
   type        = string
-  description = "(Required string) The name of the resource group in which to create the storage account. Changing this forces a new resource to be created."
+  description = "Prefix of the resource group name that's combined with a random ID so name is unique in your Azure subscription."
+  default     = "rg"
 }
+
+# variable "resource_group_name" {
+#   type        = string
+#   description = "(Required string) The name of the resource group in which to create the storage account. Changing this forces a new resource to be created."
+# }
 
 variable "location" {
   type        = string

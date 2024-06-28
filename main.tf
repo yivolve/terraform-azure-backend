@@ -4,8 +4,12 @@ locals {
   var.tags)
 }
 
+resource "random_pet" "rg_name" {
+  prefix = var.resource_group_name_prefix
+}
+
 resource "azurerm_resource_group" "iac_backend" {
-  name     = var.resource_group_name
+  name     = random_pet.rg_name.id
   location = var.location
   tags     = local.custom_tags
 }
