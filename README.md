@@ -71,7 +71,7 @@ repo_name
 
 ### Remove Azure Backend Using Terragrunt
 
-If you ever need to delete the s3 and Dynamo services then follow the steps bellow:
+If you ever need to delete the azurerm services then follow the steps bellow:
 
 1. Run the commands below to ensure terraform knows about the backend configuration (which is on the `.terraform.terraform.tfstate` file):
 
@@ -87,7 +87,7 @@ If you ever need to delete the s3 and Dynamo services then follow the steps bell
     Terraform has detected you're unconfiguring your previously set "azurerm" backend.
     Acquiring state lock. This may take a few moments...
     Do you want to copy existing state to the new backend?
-      Pre-existing state was found while migrating the previous "s3" backend to the
+      Pre-existing state was found while migrating the previous "azurerm" backend to the
       newly configured "local" backend. No existing state was found in the newly
       configured "local" backend. Do you want to copy this state to the new "local"
       backend? Enter "yes" to copy and "no" to start with an empty state.
@@ -96,5 +96,5 @@ If you ever need to delete the s3 and Dynamo services then follow the steps bell
     ```
 
 1. type `yes`
-1. Go to the AWS S3 console and empty the bucket and DynamoDb table.
+1. Optional - Go to the Azure console and empty the azurerm.
 1. Run `terragrunt destroy` to destroy both the S3 and Dynamo resources.
