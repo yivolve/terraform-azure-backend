@@ -37,17 +37,6 @@ repo_name
   include "global_providers" {
     path = find_in_parent_folders("global_providers.hcl")
   }
-
-  // Backend Provider Override
-  generate "backend_provider" {
-    path      = "global_providers_override.tf" // Must have the "_override" suffix added.
-    if_exists = "overwrite_terragrunt"
-    contents  = <<EOF
-      provider "aws" {
-        region = "${local.global_commons.Backend.iac_region}"
-      }
-    EOF
-  }
   ```
 
 1. Now, copy the snippet below on the on the `repo_name/project_name/terragrunt.hcl` and **REPLACE** the local values accordanly

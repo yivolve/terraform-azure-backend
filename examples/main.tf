@@ -9,5 +9,3 @@ module "terraform-azure-backend" {
   storage_account_name = replace(local.name, "-", "")
   storage_container_name = local.name
 }
-
-// Trigger action
