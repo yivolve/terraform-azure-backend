@@ -2,6 +2,7 @@ name: Create Release
 on:
   pull_request:
     branches: ["main"]
+    types: ["opened", "synchronize", "edited", "closed"]
 permissions:
   id-token: write
   contents: write
@@ -24,7 +25,7 @@ jobs:
           version_format: ${major}.${minor}.${patch}
 
     outputs:
-      version_tag: ${{ steps.generate-version.outputs.version_tag }}
+      version_tag: "${{ steps.generate-version.outputs.version_tag }}"
 
   release:
     if:  github.event.pull_request.merged == true
