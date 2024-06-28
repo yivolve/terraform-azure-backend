@@ -9,13 +9,13 @@ variable "resource_group_name_prefix" {
 #   description = "(Required string) The name of the resource group in which to create the storage account. Changing this forces a new resource to be created."
 # }
 
-variable "location" {
+variable "backend_location" {
   type        = string
   description = "(Required string) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created."
 }
 
 
-variable "storage_account_name" {
+variable "backend_storage_account_name" {
   type        = string
   description = "(Required string) Specifies the name of the storage account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group."
 }
@@ -33,7 +33,7 @@ variable "storage_account_replication_type" {
 }
 
 
-variable "storage_container_name" {
+variable "backend_storage_container_name" {
   type        = string
   description = "(Required string) The name of the Container which should be created within the Storage Account. Changing this forces a new resource to be created."
 }

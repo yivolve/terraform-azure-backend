@@ -1,10 +1,10 @@
-variable "location" {
-  type     = string
+variable "backend_location" {
+  type    = string
   default = "eastus"
 }
 
 variable "name" {
-  type     = string
+  type        = string
   description = "The name to be assigned to storage_account_name and storage_container_name"
-  default = "iac-backend"
+  default     = "iac-backend"
 }
