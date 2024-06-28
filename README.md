@@ -50,7 +50,7 @@ repo_name
 
 1. Now, open the `repo_name/project_name/terragrunt.hcl` file and uncomment the `remote_state` block.
 
-1. Now on the `repo_name/project_name/aws_backend/` directory run the command below to migrate the local backend to the remote s3 backend:
+1. Now on the `repo_name/project_name/aws_backend/` directory run the command below to migrate the local backend to the remote azurerm backend:
 
     ```bash
     terragrunt init --reconfigure && terragrunt plan
@@ -69,7 +69,7 @@ If you ever need to delete the azurerm services then follow the steps bellow:
     ```
 
 1. Open the root `terragrunt.hcl` file containing the backend configuration and comment out the `remote_state` block.
-1. Run `terragrunt init -migrate-state` this will copy the state file from the remote s3 bucket to the local disk, a message will apear explaining this:
+1. Run `terragrunt init -migrate-state` this will copy the state file from the remote azurerm blob container to the local disk, a message will apear explaining this:
 
     ```bash
     Initializing the backend...
@@ -86,4 +86,4 @@ If you ever need to delete the azurerm services then follow the steps bellow:
 
 1. type `yes`
 1. Optional - Go to the Azure console and empty the azurerm.
-1. Run `terragrunt destroy` to destroy both the S3 and Dynamo resources.
+1. Run `terragrunt destroy` to destroy the backend resources.
