@@ -2,6 +2,7 @@ name: Create Release
 on:
   pull_request_target:
     branches: ["main"]
+    types: ["closed"]
 permissions:
   id-token: write
   contents: write
@@ -15,23 +16,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: paulhatch/semantic-version@v5.4.0
+      - uses: PaulHatch/semantic-version@v5.4.0
         id: generate-version
         with:
           tag_prefix: "v"
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
-          version_format: "${major}.${minor}.${patch}"
+          version_format: ${major}.${minor}.${patch}
 
     outputs:
-      version: ${{ steps.generate-version.outputs.version }}
+      version_tag: ${{ steps.generate-version.outputs.version_tag }}
 
   release:
-    if:  github.event.pull_request.merged == true
+    if:  github.event.pull_request_target.merged == true
     needs: [semantic-version]
     runs-on: ubuntu-latest
     env:
-      TARGET_TAG: "${{ needs.semantic-version.outputs.version }}"
+      TARGET_TAG: "${{ needs.semantic-version.outputs.version_tag }}"
     steps:
       - name: Create release
         env:
