@@ -1,9 +1,11 @@
-# output "s3_bucket_name" {
-#   value       = module.terraform-aws-backend-s3-dynamodb.s3_bucket_name
-#   description = "S3 bucket name"
-# }
+output "resource_group_name" {
+  value = module.terraform-azure-backend.resource_group_name
+}
 
-# output "dynamodb_table_name" {
-#   value       = module.terraform-aws-backend-s3-dynamodb.dynamodb_table_name
-#   description = "DynamoDB table name"
-# }
+output "storage_account_name" {
+  value = module.terraform-azure-backend.storage_account_name
+}
+
+output "container_name" {
+  value = module.terraform-azure-backend.container_name
+}
